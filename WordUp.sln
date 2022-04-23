@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordUp", "WordUp\WordUp.csproj", "{D950AACB-6730-4D42-B2D3-CE8EA394F784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordUp.Test", "WordUp.Test\WordUp.Test.csproj", "{BCEC7FC6-E115-4062-BEF2-9C94D00A3696}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D950AACB-6730-4D42-B2D3-CE8EA394F784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D950AACB-6730-4D42-B2D3-CE8EA394F784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D950AACB-6730-4D42-B2D3-CE8EA394F784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D950AACB-6730-4D42-B2D3-CE8EA394F784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCEC7FC6-E115-4062-BEF2-9C94D00A3696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCEC7FC6-E115-4062-BEF2-9C94D00A3696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCEC7FC6-E115-4062-BEF2-9C94D00A3696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCEC7FC6-E115-4062-BEF2-9C94D00A3696}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FFDC0F4-7A64-4F6C-85CB-FF8FF0839893}
+	EndGlobalSection
+EndGlobal
