@@ -96,13 +96,14 @@ namespace WordUp
         public int? ClosestToAverageOrDefault(IEnumerable<int> numbers)
         {
             //old
+
             //return numbers.OrderBy(x => x - numbers.Average()).First();
 
             //refactor
             var average = GetAverageOrDefault(numbers);
             if (average != null)
             {
-                var data = numbers.ToList();
+                var data = numbers.OrderBy(p=>p).ToList();
                 var indexOfAverage = data.IndexOf((int)average.Value);
 
                 if (indexOfAverage == 0)
@@ -147,7 +148,75 @@ namespace WordUp
         /// </summary>
         public IEnumerable<BookingGrouping> Group(IEnumerable<Booking> dates)
         {
-            throw new NotImplementedException();
+            var list = dates.OrderBy(p => p.Date).ToList();
+            
+
+            var firstBooking = list[0];
+
+            var result = new List<BookingGrouping> {AddBookingGrouping(firstBooking)};
+            var lastDate = list[0].Date;
+            for (var index = 1; index < list.Count; index++)
+            {
+                var booking = list[index];
+
+                var date=booking.Date;
+                if (date.Subtract(lastDate).TotalDays > 1)
+                {
+                    //no consist
+                    result.Add(AddBookingGrouping(booking));
+                }
+                else
+                {
+                    //consist date
+                    var lastResult = result.Last();
+                    lastResult.To = booking.Date;
+
+                    var itemsCount = lastResult.Items.Count;
+                    for (var i = 0; i < itemsCount; i++)
+                    {
+                        var item = lastResult.Items[i];
+                        if (booking.Project == item.Project)
+                        {
+                            //exist project
+                            item.Allocation += booking.Allocation;
+                        }
+                        else
+                        {
+                            //not exist project
+
+                            lastResult.Items.Add(new BookingGroupingItem
+                            {
+                                Allocation = booking.Allocation,
+                                Project = booking.Project
+                            });
+                        }
+                    }
+                }
+            }
+
+            
+
+            return result;
+
+        }
+
+
+        public BookingGrouping AddBookingGrouping(Booking booking)
+        {
+            return new BookingGrouping
+            {
+                From = booking.Date,
+                To = booking.Date,
+                Items = new List<BookingGroupingItem>
+                {
+                    new BookingGroupingItem
+                    {
+                        Allocation = booking.Allocation,
+                        Project = booking.Project
+                    }
+                }
+
+            };
         }
 
         /// <summary>

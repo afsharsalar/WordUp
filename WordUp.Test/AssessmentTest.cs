@@ -172,6 +172,67 @@ namespace WordUp.Test
         }
 
 
+        [TestMethod]
+        public void Test_ClosestToAverageOrDefault_ResultIs4()
+        {
+            var items = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            var result = _assessment.ClosestToAverageOrDefault(items);
+
+            Assert.AreEqual(4, result);
+        }
+
+
+        [TestMethod]
+        public void Test_Group()
+        {
+            //arrange
+            var data = new List<Booking>
+            {
+                new Booking
+                {
+                    Date = new DateTime(2022,04,04),
+                    Allocation = 10,
+                    Project = "CRM",
+                },
+                new Booking
+                {
+                    Date = new DateTime(2022,04,05),
+                    Allocation = 15,
+                    Project = "CRM",
+                },
+                new Booking
+                {
+                    Date = new DateTime(2022,04,05),
+                    Allocation = 10,
+                    Project = "HR",
+                },
+                new Booking
+                {
+                    Date = new DateTime(2022,04,07),
+                    Allocation = 15,
+                    Project = "HR",
+                },
+                new Booking
+                {
+                    Date = new DateTime(2022,04,08),
+                    Allocation = 5,
+                    Project = "CRM",
+                }
+            };
+
+
+            //act
+            var result=_assessment.Group(data);
+
+            //assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3,result.Count());
+            Assert.AreEqual(25,result.ToList()[0].Items[0].Allocation);
+
+
+        }
+
 
 
         [TestMethod]
