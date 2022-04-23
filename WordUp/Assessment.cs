@@ -63,6 +63,7 @@ namespace WordUp
         /// <returns></returns>
         public IEnumerable<Score> GetAllScoresFrom(IDataProvider<Score> source)
         {
+            //I don't understand what I have to do !
             throw new NotImplementedException();
         }
 
@@ -192,6 +193,9 @@ namespace WordUp
                         }
                     }
                 }
+
+                lastDate = booking.Date;
+
             }
 
             
@@ -201,7 +205,7 @@ namespace WordUp
         }
 
 
-        public BookingGrouping AddBookingGrouping(Booking booking)
+        private BookingGrouping AddBookingGrouping(Booking booking)
         {
             return new BookingGrouping
             {

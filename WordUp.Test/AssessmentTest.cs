@@ -227,8 +227,11 @@ namespace WordUp.Test
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(3,result.Count());
+            Assert.AreEqual(2,result.Count());
+            Assert.AreEqual(10,result.ToList()[0].Items[1].Allocation);
             Assert.AreEqual(25,result.ToList()[0].Items[0].Allocation);
+            Assert.AreEqual(15,result.ToList()[1].Items[0].Allocation);
+            Assert.AreEqual(5, result.ToList()[1].Items[1].Allocation);
 
 
         }
